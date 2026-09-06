@@ -25,9 +25,10 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        console.log("Blocked by CORS:", origin); // helps you debug
+        callback(null, false);
       }
-    },
+    }, // <-- comma was missing here
     credentials: true,
   })
 );
